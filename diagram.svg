@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 740" font-family="monospace" font-size="12">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="740" fill="#f8f8f8"/>
+
+  <!-- Title -->
+  <text x="530" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#111">CPU + FFT SoC Diagram</text>
+  <!-- ═══════════════════════════════════════════
+       Bootloader (dashed outline, top center)
+  ═══════════════════════════════════════════ -->
+  <rect x="330" y="46" width="320" height="42" rx="4" fill="#eef8ff" stroke="#336699" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="490" y="63" text-anchor="middle" font-size="10" font-weight="bold" fill="#224477">Bootloader (loaded into memory at synthesis)</text>
+
+  <!-- ═══════════════════════════════════════════
+       COL 1 — Host PC  (y=170..230)
+  ═══════════════════════════════════════════ -->
+  <rect x="25" y="170" width="100" height="55" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="75" y="191" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">Host PC</text>
+
+  <!-- COL 1 — Pmod MIC3  (y=390..450) -->
+  <rect x="25" y="395" width="100" height="55" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="75" y="416" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">Pmod MIC3</text>
+
+  <!-- ═══════════════════════════════════════════
+       COL 2 — UART RX  (y=150..200)
+  ═══════════════════════════════════════════ -->
+  <rect x="185" y="150" width="110" height="50" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="240" y="170" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">UART RX</text>
+  <text x="240" y="185" text-anchor="middle" font-size="9" fill="#223355">115200 baud</text>
+
+  <!-- COL 2 — UART TX  (y=215..265) -->
+  <rect x="185" y="218" width="110" height="50" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="240" y="238" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">UART TX</text>
+  <text x="240" y="253" text-anchor="middle" font-size="9" fill="#223355">115200 baud</text>
+
+  <!-- COL 2 — MIC Sampler  (y=385..455) -->
+  <rect x="185" y="385" width="110" height="65" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="240" y="406" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">MIC Sampler</text>
+  <text x="240" y="421" text-anchor="middle" font-size="9" fill="#223355">8 kHz sample rate</text>
+
+  <!-- Host PC right(125) center-y=197  UART RX left(185) center-y=175 -->
+  <!-- elbow via x=155 -->
+  <line x1="125" y1="197" x2="155" y2="197" stroke="#333" stroke-width="1.5"/>
+  <line x1="155" y1="197" x2="155" y2="175" stroke="#333" stroke-width="1.5"/>
+  <line x1="155" y1="175" x2="184" y2="175" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="140" y="170" text-anchor="middle" font-size="9" fill="#333">uart_rx</text>
+
+  <!-- UART TX right? No: UART TX -> Host: UART TX left(185) cy=243 -> Host right(125) cy=207 -->
+  <!-- elbow via x=155 -->
+  <line x1="185" y1="243" x2="155" y2="243" stroke="#333" stroke-width="1.5"/>
+  <line x1="155" y1="243" x2="155" y2="213" stroke="#333" stroke-width="1.5"/>
+  <line x1="155" y1="213" x2="125" y2="213" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="140" y="230" text-anchor="middle" font-size="9" fill="#333">uart_tx</text>
+
+  <!-- Pmod right(125) cy=422  MIC Sampler left(185) cy=417 via elbow x=155 -->
+  <line x1="125" y1="422" x2="155" y2="422" stroke="#333" stroke-width="1.5"/>
+  <line x1="155" y1="422" x2="155" y2="417" stroke="#333" stroke-width="1.5"/>
+  <line x1="155" y1="417" x2="184" y2="417" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="140" y="411" text-anchor="middle" font-size="9" fill="#333">SPI</text>
+
+  <!-- ═══════════════════════════════════════════
+       COL 3 — UART Router  (y=140..300)
+  ═══════════════════════════════════════════ -->
+  <rect x="355" y="140" width="115" height="120" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="412" y="162" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">UART Router</text>
+
+  <!-- UART RX right(295) cy=175  Router left(355) cy=190 -->
+  <!-- elbow via x=325 -->
+  <line x1="295" y1="175" x2="325" y2="175" stroke="#333" stroke-width="1.5"/>
+  <line x1="325" y1="175" x2="325" y2="190" stroke="#333" stroke-width="1.5"/>
+  <line x1="325" y1="190" x2="354" y2="190" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="325" y="168" text-anchor="middle" font-size="9" fill="#333">raw_rx</text>
+
+  <!-- ═══════════════════════════════════════════
+       COL 4 — Data MUX  (y=370..470)
+  ═══════════════════════════════════════════ -->
+  <rect x="538" y="368" width="62" height="95" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="569" y="400" text-anchor="middle" font-size="12" font-weight="bold" fill="#223355">M</text>
+  <text x="569" y="416" text-anchor="middle" font-size="12" font-weight="bold" fill="#223355">U</text>
+  <text x="569" y="432" text-anchor="middle" font-size="12" font-weight="bold" fill="#223355">X</text>
+  <text x="569" y="379" text-anchor="middle" font-size="8" fill="#223355">select</text>
+
+  <!-- Router -> MUX: fft_rx_data
+       Router right(470) cy=215 -> right to x=505 -> down to y=385 -> right to MUX left(538) -->
+  <line x1="470" y1="215" x2="505" y2="215" stroke="#333" stroke-width="1.5"/>
+  <line x1="505" y1="215" x2="505" y2="385" stroke="#333" stroke-width="1.5"/>
+  <line x1="505" y1="385" x2="537" y2="385" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="493" y="209" text-anchor="middle" font-size="9" fill="#333">rx data</text>
+
+  <!-- Router -> MUX: fft_src_mic control
+       Router right(470) cy=240 -> right to x=519 -> down to MUX top center(569,368) -->
+  <line x1="470" y1="240" x2="519" y2="240" stroke="#333" stroke-width="1.5"/>
+  <line x1="519" y1="240" x2="519" y2="355" stroke="#333" stroke-width="1.5"/>
+  <line x1="519" y1="355" x2="569" y2="355" stroke="#333" stroke-width="1.5"/>
+  <line x1="569" y1="355" x2="569" y2="367" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="610" y="249" text-anchor="middle" font-size="9" fill="#333" transform="rotate(90,540,234)">src selector</text>
+
+  <!-- Router -> MIC Sampler: mic_enable
+       Router bottom(412,260) -> down to y=340 -> left to x=240 -> down to MIC Sampler top(240,385) -->
+  <line x1="412" y1="260" x2="412" y2="340" stroke="#333" stroke-width="1.5"/>
+  <line x1="412" y1="340" x2="240" y2="340" stroke="#333" stroke-width="1.5"/>
+  <line x1="240" y1="340" x2="240" y2="384" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="326" y="333" text-anchor="middle" font-size="9" fill="#333">enable mic</text>
+
+  <!-- MIC Sampler -> MUX: sample_data
+       MIC Sampler right(295) cy=417 -> right to MUX left(538) same y=440 -->
+  <!-- elbow: MIC right(295,417) -> x=537 direct if same y is close; use y=450 -->
+  <line x1="295" y1="440" x2="537" y2="440" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="436" y="433" text-anchor="middle" font-size="9" fill="#333">mic sample data</text>
+
+  <!-- ═══════════════════════════════════════════
+       COL 5a — FFT Stream Manager  (y=350..450)
+  ═══════════════════════════════════════════ -->
+  <rect x="655" y="348" width="125" height="100" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="717" y="372" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">FFT Stream</text>
+  <text x="717" y="388" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">Manager</text>
+
+  <!-- MUX right(600) cy=415 -> FFT Mgr left(655) cy=398 -->
+  <!-- elbow via y=398 -->
+  <line x1="600" y1="415" x2="627" y2="415" stroke="#333" stroke-width="1.5"/>
+  <line x1="627" y1="415" x2="627" y2="398" stroke="#333" stroke-width="1.5"/>
+  <line x1="627" y1="398" x2="654" y2="398" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- fft_restart: Router right(470) cy=190 -> ... need to go right then down
+       Router right(470,190) -> right to x=640 -> down to y=330 -> right to FFT Mgr top(717,348) -->
+  <line x1="470" y1="190" x2="640" y2="190" stroke="#333" stroke-width="1.5"/>
+  <line x1="640" y1="190" x2="640" y2="330" stroke="#333" stroke-width="1.5"/>
+  <line x1="640" y1="330" x2="717" y2="330" stroke="#333" stroke-width="1.5"/>
+  <line x1="717" y1="330" x2="717" y2="347" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="555" y="183" text-anchor="middle" font-size="9" fill="#333">restart fft</text>
+
+  <!-- ═══════════════════════════════════════════
+       COL 5b — Xilinx FFT IP  (y=505..575)
+  ═══════════════════════════════════════════ -->
+  <rect x="655" y="503" width="125" height="65" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="717" y="525" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">Xilinx FFT IP</text>
+  <text x="717" y="541" text-anchor="middle" font-size="9" fill="#223355">64 bin output</text>
+  <text x="717" y="556" text-anchor="middle" font-size="9" fill="#223355">AXI4-Stream</text>
+
+  <!-- FFT Mgr bottom(697,448) down to FFT IP top(697,503): s_axis left lane -->
+  <line x1="697" y1="448" x2="697" y2="502" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="688" y="478" text-anchor="end" font-size="9" fill="#333">s_axis</text>
+
+  <!-- FFT IP top(737,503) up to FFT Mgr bottom(737,448): m_axis right lane -->
+  <line x1="737" y1="502" x2="737" y2="448" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="747" y="478" text-anchor="start" font-size="9" fill="#333">m_axis</text>
+
+  <!-- ═══════════════════════════════════════════
+       COL 6 — Ping-Pong BRAM  (y=420..520)
+  ═══════════════════════════════════════════ -->
+  <rect x="843" y="418" width="145" height="90" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="915" y="440" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">Ping-Pong BRAM</text>
+  <text x="915" y="457" text-anchor="middle" font-size="9" fill="#223355">3072 bits x2 banks</text>
+  <text x="915" y="470" text-anchor="middle" font-size="9" fill="#223355">{imag[23:0], real[23:0]}</text>
+
+  <!-- FFT Mgr right(780,398) -> BRAM left(843,463): elbow via x=811 -->
+  <line x1="780" y1="398" x2="811" y2="398" stroke="#333" stroke-width="1.5"/>
+  <line x1="811" y1="398" x2="811" y2="463" stroke="#333" stroke-width="1.5"/>
+  <line x1="811" y1="463" x2="842" y2="463" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="800" y="391" text-anchor="middle" font-size="9" fill="#333">bram wr</text>
+
+  <!-- fft_frame_done: BRAM left(843,430) -> up to y=110 -> left to Router top(412,110) -> down into Router(412,140) -->
+  <line x1="843" y1="430" x2="820" y2="430" stroke="#333" stroke-width="1.5"/>
+  <line x1="820" y1="430" x2="820" y2="110" stroke="#333" stroke-width="1.5"/>
+  <line x1="820" y1="110" x2="412" y2="110" stroke="#333" stroke-width="1.5"/>
+  <line x1="412" y1="110" x2="412" y2="139" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="616" y="103" text-anchor="middle" font-size="9" fill="#333">fft curr frame done</text>
+
+  <!-- ═══════════════════════════════════════════
+       RISC-V CPU  (y=590..700)
+  ═══════════════════════════════════════════ -->
+  <rect x="185" y="588" width="630" height="110" rx="6" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <text x="500" y="610" text-anchor="middle" font-size="13" font-weight="bold" fill="#111">RISC-V CPU  (RV32I)</text>
+
+  <!-- Pipeline stage boxes -->
+  <rect x="198" y="636" width="50" height="26" rx="2" fill="#eef4ff" stroke="#336699" stroke-width="1"/>
+  <text x="223" y="653" text-anchor="middle" font-size="9" fill="#223355">IF</text>
+
+  <rect x="255" y="636" width="50" height="26" rx="2" fill="#eef4ff" stroke="#336699" stroke-width="1"/>
+  <text x="280" y="653" text-anchor="middle" font-size="9" fill="#223355">ID</text>
+
+  <rect x="312" y="636" width="50" height="26" rx="2" fill="#eef4ff" stroke="#336699" stroke-width="1"/>
+  <text x="337" y="653" text-anchor="middle" font-size="9" fill="#223355">EX</text>
+
+  <rect x="369" y="636" width="50" height="26" rx="2" fill="#eef4ff" stroke="#336699" stroke-width="1"/>
+  <text x="394" y="653" text-anchor="middle" font-size="9" fill="#223355">MEM</text>
+
+  <rect x="426" y="636" width="50" height="26" rx="2" fill="#eef4ff" stroke="#336699" stroke-width="1"/>
+  <text x="451" y="653" text-anchor="middle" font-size="9" fill="#223355">WB</text>
+
+  <!-- Stage arrows -->
+  <line x1="248" y1="649" x2="254" y2="649" stroke="#336699" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="305" y1="649" x2="311" y2="649" stroke="#336699" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="362" y1="649" x2="368" y2="649" stroke="#336699" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="419" y1="649" x2="425" y2="649" stroke="#336699" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- IMEM / DMEM / RegFile -->
+  <rect x="498" y="633" width="68" height="30" rx="2" fill="#eef4ff" stroke="#336699" stroke-width="1"/>
+  <text x="532" y="645" text-anchor="middle" font-size="9" font-weight="bold" fill="#223355">Inst MEM</text>
+  <text x="532" y="657" text-anchor="middle" font-size="8" fill="#223355">262144 bits</text>
+
+  <rect x="574" y="633" width="68" height="30" rx="2" fill="#eef4ff" stroke="#336699" stroke-width="1"/>
+  <text x="608" y="645" text-anchor="middle" font-size="9" font-weight="bold" fill="#223355">Data MEM</text>
+  <text x="608" y="657" text-anchor="middle" font-size="8" fill="#223355">65536 bits</text>
+
+  <rect x="650" y="633" width="68" height="30" rx="2" fill="#eef4ff" stroke="#336699" stroke-width="1"/>
+  <text x="684" y="645" text-anchor="middle" font-size="9" font-weight="bold" fill="#223355">Reg File</text>
+  <text x="684" y="657" text-anchor="middle" font-size="8" fill="#223355">32 regs</text>
+
+  <!-- CPU bottom note row -->
+
+  <!-- ═══════════════════════════════════════════
+       Bootloader -> CPU IMEM  (dashed down into IMEM)
+  ═══════════════════════════════════════════ -->
+  <line x1="490" y1="88" x2="490" y2="587" stroke="#333" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- ═══════════════════════════════════════════
+       Router <-> CPU: cpu_rx_data / cpu_release
+       Router bottom-left at x=370, bottom y=260
+       CPU top at y=588, x=370
+  ═══════════════════════════════════════════ -->
+  <!-- cpu_rx: Router bottom(370,260) -> down to CPU top(370,588) -->
+  <line x1="370" y1="260" x2="370" y2="587" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="316" y="430" text-anchor="end" font-size="9" fill="#333" transform="rotate(-90,356,430)">rx data</text>
+
+  <!-- cpu_release: CPU top(390,588) -> up to Router bottom(390,260) -->
+  <line x1="390" y1="587" x2="390" y2="261" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="426" y="430" text-anchor="start" font-size="9" fill="#333" transform="rotate(-90,406,430)">cpu release</text>
+
+  <!-- ═══════════════════════════════════════════
+       CPU -> UART TX
+       CPU left(185) at y=640 -> left to x=160 -> up to y=243 -> right to UART TX left(185,243)
+  ═══════════════════════════════════════════ -->
+  <line x1="185" y1="640" x2="160" y2="640" stroke="#333" stroke-width="1.5"/>
+  <line x1="160" y1="640" x2="160" y2="243" stroke="#333" stroke-width="1.5"/>
+  <line x1="160" y1="243" x2="184" y2="243" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="108" y="450" text-anchor="middle" font-size="9" fill="#333" transform="rotate(-90,148,450)">uart_tx</text>
+
+  <!-- ═══════════════════════════════════════════
+       CPU <-> BRAM
+       CPU right(815) at y=636 -> right to BRAM
+  ═══════════════════════════════════════════ -->
+  <!-- CPU -> BRAM: fft_bram_rd_addr  CPU right(815,636) -> right to x=830 -> up to y=458 -> right to BRAM left(843,458) -->
+  <line x1="815" y1="636" x2="830" y2="636" stroke="#333" stroke-width="1.5"/>
+  <line x1="830" y1="636" x2="830" y2="458" stroke="#333" stroke-width="1.5"/>
+  <line x1="830" y1="458" x2="842" y2="458" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="796" y="555" text-anchor="start" font-size="9" fill="#333" transform="rotate(-90,836,550)">bram rd address</text>
+
+
+<line x1="915" y1="508" x2="915" y2="660" stroke="#333" stroke-width="1.5"/>
+  <line x1="915" y1="660" x2="815" y2="660" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="835" y="655" text-anchor="start" font-size="9" fill="#333">bram rd data</text>
+  <!-- fft_frame_ack: CPU right(815,648) -> elbow out to x=843 separate lane -->
+  <!-- just add a label note alongside the rd_addr line — too cramped for separate wire, note inline -->
+
+  <!-- ═══════════════════════════════════════════
+       OUTPUT PERIPHERALS — LEDs + 7-Seg
+  ═══════════════════════════════════════════ -->
+  <rect x="1000" y="590" width="85" height="42" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="1042" y="608" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">LEDs</text>
+  <text x="1042" y="622" text-anchor="middle" font-size="9" fill="#223355">16-bit</text>
+
+  <rect x="1000" y="645" width="85" height="42" rx="4" fill="#eef4ff" stroke="#336699" stroke-width="1.5"/>
+  <text x="1042" y="661" text-anchor="middle" font-size="11" font-weight="bold" fill="#223355">7-Seg</text>
+  <text x="1042" y="676" text-anchor="middle" font-size="9" fill="#223355">4-digit hex</text>
+
+  <!-- CPU right(815,620) -> LEDs left(1000,611): elbow via x=907 -->
+  <line x1="815" y1="620" x2="907" y2="620" stroke="#333" stroke-width="1.5"/>
+  <line x1="907" y1="620" x2="907" y2="611" stroke="#333" stroke-width="1.5"/>
+  <line x1="907" y1="611" x2="999" y2="611" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="948" y="606" text-anchor="middle" font-size="9" fill="#333">led output</text>
+
+  <!-- CPU right(815,670) -> 7-Seg left(1000,666): elbow via x=930 -->
+  <line x1="815" y1="670" x2="930" y2="670" stroke="#333" stroke-width="1.5"/>
+  <line x1="930" y1="670" x2="930" y2="666" stroke="#333" stroke-width="1.5"/>
+  <line x1="930" y1="666" x2="999" y2="666" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="925" y="681" text-anchor="middle" font-size="9" fill="#333">seven seg disp output</text>
+
+</svg>
