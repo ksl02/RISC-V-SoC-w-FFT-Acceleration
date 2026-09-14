@@ -6,6 +6,6 @@ This project implements a custom System-on-Chip on the Basys 3 FPGA for real-tim
 
 ![CPU + FFT SoC Architecture](diagram.svg)
 
-The system runs at 100 MHz and includes a UART bootloader for loading new RV32I programs without rebuilding the FPGA bitstream. The final design achieved a 1.94 µs FFT computation time and approximately 6.94 µs from the final input sample through completion of the CPU readback. The estimated total on-chip power consumption was 0.223 W.
+The software side includes a lightweight C bootloader that receives RV32I programs over UART, writes them into instruction memory through MMIO, and transfers execution to the uploaded program. C firmware also uses MMIO to control peripherals and routing and to read FFT results back from BRAM. The final design achieved a 1.94 µs FFT computation time and approximately 6.94 µs from the final input sample through completion of the CPU readback. The estimated total on-chip power consumption was 0.223 W.
 
 ![Utilization](utilization.png)
